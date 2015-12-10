@@ -1,11 +1,10 @@
 # http://docs.docker.com/reference/builder
 # docker backup image (boombatower/docker-backup).
 
-FROM boombatower/opensuse
-MAINTAINER Jimmy Berry <jimmy@boombatower.com>
+FROM hypriot/rpi-python
+MAINTAINER Geir Gullestad Pettersen <geirgp@gmail.com>
 
-RUN zypper refresh && \
-    zypper -n in --no-recommends tar xz
+RUN apt-get update && apt-get -y install tar xz-utils libpcre3
 
 ADD backup.sh /root/bin/
 
